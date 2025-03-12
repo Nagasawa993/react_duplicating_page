@@ -6,7 +6,7 @@ function Top() {
   return (
     <div>
       <h1>TOPページ</h1>
-      <button onClick={() => navigate("/page1")}>ページ1へ</button>
+      <button onClick={() => navigate("/page1")}>ページへ</button>
     </div>
   );
 }

@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
-function Page({ index, pages }) {
+function Page({ page, nextPageIndex, totalPages }) {
   const navigate = useNavigate();
-  const nextPage = index + 1 < pages.length ? `/page${index + 2}` : "/";
+  const nextPagePath = nextPageIndex < totalPages ? `/page${nextPageIndex + 1}` : "/";
 
   return (
     <div>
-      <h1>{pages[index]}</h1>
-      {index + 1 < pages.length ? (
-        <button onClick={() => navigate(nextPage)}>次のページへ</button>
+      <h1>{page.name}</h1>
+      <p>質問: {page.question}</p>
+      <p>カテゴリ: {page.category}</p>
+      {nextPageIndex < totalPages ? (
+        <button onClick={() => navigate(nextPagePath)}>次のページへ</button>
       ) : (
         <button onClick={() => navigate("/")}>TOPへ戻る</button>
       )}
