@@ -3,11 +3,11 @@ import Top from "./pages/Top";
 import Page from "./pages/Page";
 
 const pages = [
-  { name: "ページ1", question: "1+2=", answer: "3",category: "A" },
-  { name: "ページ2", question: "3-4=", answer: "-1",category: "A" },
-  { name: "ページ3", question: "5*6=", answer: "30",category: "B" },
-  { name: "ページ4", question: "7/8=", answer: "0",category: "B" }
+  {id: 1, kind: "python", question: "○○は××ですか？",select: ["A", "B", "C", "D"],  answer: "A"},
+  {id: 2, kind: "python", question: "○○は××ですか？",select: ["A", "B", "C", "D"],  answer: "A"},
+  {id: 3, kind: "python", question: "○○は××ですか？",select: ["A", "B", "C", "D"],  answer: "A"}
 ];
+
 
 function Routers() {
   return (

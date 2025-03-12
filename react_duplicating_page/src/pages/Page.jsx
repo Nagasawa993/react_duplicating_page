@@ -7,8 +7,9 @@ function Page({ page, nextPageIndex, totalPages }) {
   return (
     <div>
       <h1>{page.name}</h1>
+      <p>id: {page.id}</p>
       <p>質問: {page.question}</p>
-      <p>カテゴリ: {page.category}</p>
+      <p>カテゴリ: {page.kind}</p>
       {nextPageIndex < totalPages ? (
         <button onClick={() => navigate(nextPagePath)}>次のページへ</button>
       ) : (
