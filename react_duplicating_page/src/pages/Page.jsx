@@ -1,22 +1,34 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Question from "../components/Question";
 
-function Page({ page, nextPageIndex, totalPages }) {
+export default function Page() {
+  const location = useLocation();
   const navigate = useNavigate();
-  const nextPagePath = nextPageIndex < totalPages ? `/page${nextPageIndex + 1}` : "/";
+  const { index } = useParams();
+  const pageIndex = parseInt(index, 10);
+  const pages = location.state?.filteredPages || [];
+
+  if (!pages.length) {
+    return <p>エラー: 問題がありません</p>;
+  }
+
+  const currentPage = pages[pageIndex];
 
   return (
     <div>
-      <h1>{page.name}</h1>
-      <p>id: {page.id}</p>
-      <p>質問: {page.question}</p>
-      <p>カテゴリ: {page.kind}</p>
-      {nextPageIndex < totalPages ? (
-        <button onClick={() => navigate(nextPagePath)}>次のページへ</button>
-      ) : (
-        <button onClick={() => navigate("/")}>TOPへ戻る</button>
-      )}
+      <Question page={currentPage} />
+      <div>
+        {pageIndex > 0 && (
+          <button onClick={() => navigate(`/page/${pageIndex - 1}`, { state: { filteredPages: pages } })}>
+            戻る
+          </button>
+        )}
+        {pageIndex < pages.length - 1 && (
+          <button onClick={() => navigate(`/page/${pageIndex + 1}`, { state: { filteredPages: pages } })}>
+            次へ
+          </button>
+        )}
+      </div>
     </div>
   );
 }
-
-export default Page;
