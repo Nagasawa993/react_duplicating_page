@@ -1,56 +1,62 @@
 import { useState } from "react";
 
-const pages = [
-  { id: 1, kind: "python", question: "○○は××ですか？", select: ["A", "B", "C", "D"], answer: "A" },
-  { id: 2, kind: "python", question: "○○は××ですか？", select: ["A", "B", "C", "D"], answer: "B" },
-  { id: 3, kind: "VBA", question: "○○は××ですか？", select: ["A", "B", "C", "D"], answer: "C" },
-  { id: 4, kind: "VBA", question: "○○は××ですか？", select: ["A", "B", "C", "D"], answer: "D" },
-  { id: 5, kind: "LPIC", question: "○○は××ですか？", select: ["A", "B", "C", "D"], answer: "A" }
-];
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const handleAdd = () => {
+//     setCount(prev => prev + 1)
+//   }
+//   return (
+//     <div className="App">
+//       <button onClick={handleAdd}>{count}</button>      
+//     </div>
+//   );
+// }
+// export default App;
 
-export default function App() {
-  const [selectedKinds, setSelectedKinds] = useState([]);
 
-  // ボタンをクリックしてフィルタリング対象を切り替える
-  const toggleKind = (kind) => {
-    setSelectedKinds((prev) =>
-      prev.includes(kind) ? prev.filter(k => k !== kind) : [...prev, kind]
-    );
-  };
+// const members = ["Araki", "Ibata", "Fukutome", "Woods", "Alex", "Tatsunami"];
+// function App() {
+// const dragons_2006_members = members.map((a, b) => {
+//   return `${b + 1}番目は${a}`;
+// });
+// console.log(dragons_2006_members);
+// }
+// export default App;
 
-  // 選択されたkindの配列を作成
-  const filteredPages = pages.filter(page => selectedKinds.includes(page.kind));
 
+// const number = "0"
+// const result=number ? "true" : "false";
+// function App() {
+//   return (
+//     console.log(result)
+//   )
+// }
+// export default App;
+
+
+function App() {
+  const [integer, setInteger] = useState(["aaa", "bbb", "ccc"]);
   return (
-    <div>
-      <div>
-        {["python", "VBA", "LPIC"].map((kind) => (
-          <button
-            key={kind}
-            onClick={() => toggleKind(kind)}
-            style={{
-              margin: "5px",
-              padding: "10px",
-              backgroundColor: selectedKinds.includes(kind) ? "lightblue" : "white"
-            }}
-          >
-            {kind}
-          </button>
-        ))}
-      </div>
-
-      <h2>選択された問題</h2>
-      {filteredPages.length > 0 ? (
-        <ul>
-          {filteredPages.map((page) => (
-            <li key={page.id}>
-              {page.kind}: {page.question}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>問題が選択されていません</p>
-      )}
-    </div>
-  );
+    console.log(integer),
+    setInteger(prev => [...prev, "ddd"]),
+    console.log(integer)
+  )
 }
+export default App;
+
+
+// function App() {
+//   return(
+// ["apple", "banana", "orange"].map(kind => (
+//   <button
+//     key={kind}
+//     onClick={() => toggleKind(kind)}
+//     style={{
+//       backgroundColor: selectedKinds.includes(kind) ? "lightgreen" : "white"
+//     }}
+//   >
+//     {kind}
+//   </button>
+// )))
+// }
+// export default App;
